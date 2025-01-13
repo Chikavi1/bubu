@@ -6,8 +6,8 @@ import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
-  imports: [ReactiveFormsModule,HttpClientModule],
-  providers: [AuthService],
+  imports: [ReactiveFormsModule,],
+  providers: [],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
@@ -15,7 +15,7 @@ export class LoginComponent {
 
   register: any;
   
-  constructor(private authService: AuthService, private fb: FormBuilder,private router: Router) {
+  constructor(private fb: FormBuilder,private router: Router) {
      this.register = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
@@ -23,10 +23,14 @@ export class LoginComponent {
   }
 
 
-   login() {
-    this.authService.login(this.register.value).subscribe((response: any) => {
-      this.authService.saveToken(response.access_token);
-    });
+  login() {
+    this.router.navigate(['/admin/business/clients']);
+    localStorage.setItem('auth', 'true');
+    localStorage.setItem('role', 'business');
+    
+    // this.authService.login(this.register.value).subscribe((response: any) => {
+    //   this.authService.saveToken(response.access_token);
+    // });
   }
 
 }

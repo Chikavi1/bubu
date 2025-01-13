@@ -22,6 +22,10 @@ export class AuthService {
     return localStorage.getItem('access_token');
   }
 
+  getUserRole() {
+    return 'business';
+  }
+
   logout() {
     localStorage.removeItem('access_token');
     this.router.navigate(['/login']);

@@ -1,0 +1,132 @@
+
+<div class="p-6">
+    <h2 class="dark:text-white text-3xl font-semibold mt-12">Tu dieta</h2>
+    <div class="mb-4 border-b border-gray-200 dark:border-gray-700">
+        <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" id="default-tab"
+            data-tabs-toggle="#default-tab-content" role="tablist">
+            <li class="me-2" role="presentation">
+                <button class="inline-block p-4 border-b-2 rounded-t-lg capital" id="monday-tab" data-tabs-target="#monday"
+                    type="button" role="tab" aria-controls="monday" aria-selected="false">{{ daysOfThisWeek[0] }}</button>
+            </li>
+            <li class="me-2" role="presentation">
+                <button
+                    class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 capital"
+                    id="tuesday-tab" data-tabs-target="#tuesday" type="button" role="tab" aria-controls="tuesday"
+                    aria-selected="false">{{ daysOfThisWeek[1] }}</button>
+            </li>
+            <li class="me-2" role="presentation">
+                <button
+                    class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 capital"
+                    id="wednesday-tab" data-tabs-target="#wednesday" type="button" role="tab" aria-controls="wednesday"
+                    aria-selected="false">{{ daysOfThisWeek[2] }}</button>
+            </li>
+            <li role="presentation">
+                <button
+                    class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 capital"
+                    id="thursday-tab" data-tabs-target="#thursday" type="button" role="tab" aria-controls="thursday"
+                    aria-selected="false">{{ daysOfThisWeek[3] }}</button>
+            </li>
+            <li role="presentation">
+                <button
+                    class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 capital"
+                    id="friday-tab" data-tabs-target="#friday" type="button" role="tab" aria-controls="friday"
+                    aria-selected="false">{{ daysOfThisWeek[4] }}</button>
+            </li>
+            <li role="presentation">
+                <button
+                    class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 capital"
+                    id="saturday-tab" data-tabs-target="#saturday" type="button" role="tab" aria-controls="saturday"
+                    aria-selected="false">{{ daysOfThisWeek[5] }}</button>
+            </li>
+            <li role="presentation">
+                <button
+                    class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 capital"
+                    id="sunday-tab" data-tabs-target="#sunday" type="button" role="tab" aria-controls="sunday"
+                    aria-selected="false">{{ daysOfThisWeek[6] }}</button>
+            </li>
+        </ul>
+    </div>
+
+    <div id="default-tab-content">
+                <div *ngFor="let diet of diets">
+                    <div class="hidden p-12 rounded-lg bg-gray-50 dark:bg-gray-800" [id]="diet.day" role="tabpanel" aria-labelledby="tuesday-tab">
+                        <ol class="relative border-s border-gray-200 dark:border-gray-700">
+                            <li class="mb-10 ms-6">
+                                <span
+                                    class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                                    <svg class="w-2.5 h-2.5 text-blue-800 dark:text-blue-300" aria-hidden="true"
+                                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                        <path
+                                            d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
+                                    </svg>
+                                </span>
+                                <h3 class="flex items-center mb-1 text-lg font-semibold text-gray-900 dark:text-white">{{diet.meals[0].name}} 
+                                    <!-- <span class="bg-blue-100 text-blue-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300 ms-3">Latest</span> -->
+                                </h3>
+                                <time class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
+                                    {{ diet.meals[0].hour }} 
+                                </time>
+                                    <div *ngFor="let recipe of diet.meals[0].food" class="text-base font-normal text-gray-500 dark:text-gray-400">
+                                        <ul class="list-disc  ml-8">
+                                            <li> {{recipe}} </li>
+                                        </ul>
+                                    </div>
+                                    
+                                <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400 mt-4 italic">Nota: {{diet.meals[0].notes}} </p>
+                                <!-- <a href="#"
+                                    class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:outline-none focus:ring-gray-100 focus:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-700"><svg
+                                        class="w-3.5 h-3.5 me-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                        viewBox="0 0 20 20">
+                                        <path
+                                            d="M14.707 7.793a1 1 0 0 0-1.414 0L11 10.086V1.5a1 1 0 0 0-2 0v8.586L6.707 7.793a1 1 0 1 0-1.414 1.414l4 4a1 1 0 0 0 1.416 0l4-4a1 1 0 0 0-.002-1.414Z" />
+                                        <path
+                                            d="M18 12h-2.55l-2.975 2.975a3.5 3.5 0 0 1-4.95 0L4.55 12H2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2Zm-3 5a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z" />
+                                    </svg> Descargar recetas</a> -->
+                            </li>
+                            <li class="mb-10 ms-6">
+                                <span
+                                    class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                                    <svg class="w-2.5 h-2.5 text-blue-800 dark:text-blue-300" aria-hidden="true"
+                                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                        <path
+                                            d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
+                                    </svg>
+                                </span>
+                                <h3 class="mb-1 text-lg font-semibold text-gray-900 dark:text-white">{{diet.meals[1].name}}</h3>
+                                
+                                <time class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">{{diet.meals[1].hour}}</time>
+                                    <div *ngFor="let recipe of diet.meals[1].food" class="text-base font-normal text-gray-500 dark:text-gray-400">
+                                        <ul class="list-disc  ml-8">
+                                            <li>
+                                                {{recipe}}
+                                            </li>
+                                        </ul>
+                                    </div>
+                                <p class="text-base font-normal text-gray-500 dark:text-gray-400 mt-4 italic">Nota: {{diet.meals[0].notes}}</p> 
+                            </li>
+                            <li class="ms-6">
+                                <span
+                                    class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                                    <svg class="w-2.5 h-2.5 text-blue-800 dark:text-blue-300" aria-hidden="true"
+                                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                        <path
+                                            d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
+                                    </svg>
+                                </span>
+                                <h3 class="mb-1 text-lg font-semibold text-gray-900 dark:text-white">{{diet.meals[2].name}}</h3>
+                                <time class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">{{diet.meals[2].hour}}</time>
+                                <div *ngFor="let recipe of diet.meals[2].food" class="text-base font-normal text-gray-500 dark:text-gray-400">
+                                    <ul class="list-disc ml-8">
+                                        <li>
+                                            {{recipe}}
+                                        </li>
+                                    </ul>
+                                </div>
+                                <p class="text-base font-normal text-gray-500 dark:text-gray-400 mt-4 italic">Nota: {{diet.meals[2].notes}}</p>
+                            </li>
+                        </ol>
+            
+                    </div>
+                </div>
+    </div>
+</div>

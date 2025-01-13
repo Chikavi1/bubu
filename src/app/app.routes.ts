@@ -37,6 +37,9 @@ import { IndexComponent } from './admin/business/gift-cards/index/index.componen
 import { ShowComponent } from './admin/business/gift-cards/show/show.component';
 import { CheckoutComponent } from './public/checkout/checkout.component';
 import { PaymentStatusComponent } from './public/payment-status/payment-status.component';
+import { ShowComponent as showUser } from './admin/business/users/show/show.component';
+import { ExercisesComponent } from './admin/business/users/exercises/exercises.component';
+import { DietComponent } from './admin/business/users/diet/diet.component';
 
 export const routes: Routes = [
   
@@ -47,27 +50,30 @@ export const routes: Routes = [
   children: [
     { path: 'clients', component: DashboardClient },
     
+      // canActivate: [RoleGuard],
+    { path: 'business', component: DashboardAdmin,  data: { role: 'business' } },
+    { path: 'business/clients', component: UsersComponent,  data: { role: 'business' } },
+    { path: 'business/clients/create', component: UsersCreate,  data: { role: 'business' } },
+    { path: 'business/clients/show/:id', component: showUser,  data: { role: 'business' } },
+    { path: 'business/clients/show/:id/exercises', component: ExercisesComponent,  data: { role: 'business' } },
+    { path: 'business/clients/show/:id/diet', component: DietComponent,  data: { role: 'business' } },
 
-    { path: 'business', component: DashboardAdmin, canActivate: [RoleGuard], data: { role: 'business' } },
-    { path: 'business/clients', component: UsersComponent, canActivate: [RoleGuard], data: { role: 'business' } },
-    { path: 'business/clients/create', component: UsersCreate, canActivate: [RoleGuard], data: { role: 'business' } },
+    { path: 'business/visits/create', component: VisitsCreate,  data: { role: 'business' } }, 
+    { path: 'business/visits', component: VisitsComponent,  data: { role: 'business' } },
+    { path: 'business/clients-stats', component: ClientStatsComponent,  data: { role: 'business' } },
+    { path: 'business/payment-form', component: PaymentFormComponent,  data: { role: 'business' } },
+    { path: 'business/gift-cards', component: GiftCardsComponent,  data: { role: 'business' } },
+    { path: 'business/gift-cards/create', component: GiftsCreate,  data: { role: 'business' } },
+    { path: 'business/gift-cards-redeem', component: RedeemComponent,  data: { role: 'business' } },
+    { path: 'business/public-gift-cards', component: PublicComponent,  data: { role: 'business' } },
+    { path: 'business/public-gift-cards/create', component: CreatePublicComponent,  data: { role: 'business' } },
 
-    { path: 'business/visits/create', component: VisitsCreate, canActivate: [RoleGuard], data: { role: 'business' } }, 
-    { path: 'business/visits', component: VisitsComponent, canActivate: [RoleGuard], data: { role: 'business' } },
-    { path: 'business/clients-stats', component: ClientStatsComponent, canActivate: [RoleGuard], data: { role: 'business' } },
-    { path: 'business/payment-form', component: PaymentFormComponent, canActivate: [RoleGuard], data: { role: 'business' } },
-    { path: 'business/gift-cards', component: GiftCardsComponent, canActivate: [RoleGuard], data: { role: 'business' } },
-    { path: 'business/gift-cards/create', component: GiftsCreate, canActivate: [RoleGuard], data: { role: 'business' } },
-    { path: 'business/gift-cards-redeem', component: RedeemComponent, canActivate: [RoleGuard], data: { role: 'business' } },
-    { path: 'business/public-gift-cards', component: PublicComponent, canActivate: [RoleGuard], data: { role: 'business' } },
-    { path: 'business/public-gift-cards/create', component: CreatePublicComponent, canActivate: [RoleGuard], data: { role: 'business' } },
-
-    { path: 'business/billing', component: BillingComponent, canActivate: [RoleGuard], data: { role: 'business' } },
-    { path: 'business/profile', component: ProfileComponent, canActivate: [RoleGuard], data: { role: 'business' } },
-    { path: 'business/:id/edit', component: EditComponent, canActivate: [RoleGuard], data: { role: 'business' } },
-    { path: 'business/configuration', component: ConfigurationComponent, canActivate: [RoleGuard], data: { role: 'business' } },
+    { path: 'business/billing', component: BillingComponent,  data: { role: 'business' } },
+    { path: 'business/profile', component: ProfileComponent,  data: { role: 'business' } },
+    { path: 'business/:id/edit', component: EditComponent,  data: { role: 'business' } },
+    { path: 'business/configuration', component: ConfigurationComponent,  data: { role: 'business' } },
     
-    { path: 'clients/cards', component: CardsComponent, canActivate: [RoleGuard], data: { role: 'business' } }, //cambiar
+    { path: 'clients/cards', component: CardsComponent,  data: { role: 'business' } }, //cambiar
     
     // { path: 'business/users', component: UsersComponent, canActivate: [RoleGuard], data: { role: 'admin' } }
   ]
