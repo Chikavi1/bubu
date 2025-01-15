@@ -9,3 +9,7 @@
 .swal2-styled{
     background-color: #34d610 !important;
 }
+
+.capital:first-letter {
+    text-transform: capitalize;
+}
