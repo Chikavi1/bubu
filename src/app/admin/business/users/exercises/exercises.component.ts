@@ -14,7 +14,12 @@ export class ExercisesComponent {
 
   daysOfThisWeek: any = [];
 
-  exercises: any =
+  exercises;
+
+  constructor() { 
+    this.daysOfThisWeek = this.getWeekDays(new Date());
+
+    this.exercises =
     [
       {
         "day": "monday",
@@ -263,9 +268,6 @@ export class ExercisesComponent {
       }
     ]
 
-
-  constructor() { 
-    this.daysOfThisWeek = this.getWeekDays(new Date());
   }
 
   
@@ -273,6 +275,9 @@ export class ExercisesComponent {
      console.log('calendario')
   }
 
+  downloadPDF() {
+    console.log('descar')
+  }
 
   getWeekDays(startDate: Date): string[] {
       const startOfWeekDate = startOfWeek(startDate, { locale: es }); // Inicio de la semana

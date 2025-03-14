@@ -19,7 +19,33 @@ export class DietComponent {
   private SCOPES = 'https://www.googleapis.com/auth/calendar';
 
  
-   public diets =  [
+  diets
+    
+   
+  
+  
+   getWeekDays(startDate: Date): string[] {
+    const startOfWeekDate = startOfWeek(startDate, { locale: es }); // Inicio de la semana
+    const weekDays: string[] = [];
+
+    for (let i = 0; i < 7; i++) {
+      const currentDay = addDays(startOfWeekDate, i);
+      const formattedDate = format(currentDay, "eeee, d 'de' MMMM", { locale: es });
+      weekDays.push(formattedDate);
+    }
+
+    return weekDays;
+   }
+  
+  daysOfThisWeek: any = [];
+
+  constructor() {
+    // this.initClient();
+
+    this.daysOfThisWeek = this.getWeekDays(new Date());
+    console.log(this.daysOfThisWeek);
+
+    this.diets = [
   {
     "day": "monday",
     "meals": [
@@ -203,28 +229,6 @@ export class DietComponent {
     ]
   }
    ]
-  
-  
-   getWeekDays(startDate: Date): string[] {
-    const startOfWeekDate = startOfWeek(startDate, { locale: es }); // Inicio de la semana
-    const weekDays: string[] = [];
-
-    for (let i = 0; i < 7; i++) {
-      const currentDay = addDays(startOfWeekDate, i);
-      const formattedDate = format(currentDay, "eeee, d 'de' MMMM", { locale: es });
-      weekDays.push(formattedDate);
-    }
-
-    return weekDays;
-   }
-  
-  daysOfThisWeek: any = [];
-
-  constructor() {
-    // this.initClient();
-
-    this.daysOfThisWeek = this.getWeekDays(new Date());
-    console.log(this.daysOfThisWeek);
     
   }
   

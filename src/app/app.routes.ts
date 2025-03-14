@@ -71,9 +71,12 @@ export const routes: Routes = [
     { path: 'business/billing', component: BillingComponent,  data: { role: 'business' } },
     { path: 'business/profile', component: ProfileComponent,  data: { role: 'business' } },
     { path: 'business/:id/edit', component: EditComponent,  data: { role: 'business' } },
-    { path: 'business/configuration', component: ConfigurationComponent,  data: { role: 'business' } },
+    { path: 'business/configuration', component: ConfigurationComponent, data: { role: 'business' } },
     
-    { path: 'clients/cards', component: CardsComponent,  data: { role: 'business' } }, //cambiar
+    { path: 'clients/cards', component: CardsComponent, data: { role: 'business' } }, //cambiar
+     
+
+    { path: 'statics', component: ClientStatsComponent,  data: { role: 'business' } },
     
     // { path: 'business/users', component: UsersComponent, canActivate: [RoleGuard], data: { role: 'admin' } }
   ]

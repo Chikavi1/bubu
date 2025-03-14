@@ -14,7 +14,27 @@ import { HttpClientModule } from '@angular/common/http';
   templateUrl: './users.component.html',
 })
 export class UsersComponent {
-  users: User[] = [];
+  users = [
+    {
+      id: 1,
+      name: 'John Doe',
+      email: 'p2Jd0@example.com',
+      plan: 'Basic',
+      phone: '1234567890',
+      suscription: 'Active',
+      endDay: '2023-12-31'
+    },
+    {
+      id: 1,
+      name: 'Elizabeth ',
+      email: 'p2Jd0@example.com',
+      plan: 'Basic',
+      phone: '1234567890',
+      suscription: 'Active',
+      endDay: '2023-12-31'
+    }
+    
+  ];
 
   constructor(private api: CrudService){
     this.getUsers();

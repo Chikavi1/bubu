@@ -23,6 +23,7 @@
     "date-fns": "^4.1.0",
     "dotenv": "^16.4.7",
     "flowbite": "^2.5.2",
+    "gapi-script": "^1.2.0",
     "i": "^0.3.7",
     "ng2-charts": "^7.0.0",
     "ngx-chartjs": "^0.0.1",
